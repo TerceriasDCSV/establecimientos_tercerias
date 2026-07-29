@@ -190,7 +190,8 @@
     font-size:11.5px;font-weight:600;padding:7px 12px;border-radius:9px;letter-spacing:.3px;backdrop-filter:blur(4px)}
   .leaflet-tooltip{font-family:'Inter',sans-serif;font-size:12px;font-weight:600}
   .depto-label{background:none;border:none;box-shadow:none;pointer-events:none}
-  .depto-label span{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;letter-spacing:.5px;
+  .depto-label span{position:absolute;transform:translate(-50%,-50%);
+    font-family:'Inter',sans-serif;font-size:13px;font-weight:800;letter-spacing:.5px;
     text-transform:uppercase;color:#0b1f2a;white-space:nowrap;
     text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff,0 0 6px #fff}
 
@@ -761,20 +762,20 @@ function initMap(){
   addDeptoLabels();
 }
 const DEPTO_CENTROIDS = [
-  ["Ahuachapán",13.9214,-89.8450],
-  ["Santa Ana",13.9942,-89.5597],
-  ["Sonsonate",13.7167,-89.7333],
-  ["Chalatenango",14.1000,-89.1667],
-  ["La Libertad",13.6833,-89.3667],
-  ["San Salvador",13.7300,-89.1900],
-  ["Cuscatlán",13.7500,-88.9500],
-  ["La Paz",13.5167,-88.9500],
-  ["Cabañas",13.8667,-88.6333],
-  ["San Vicente",13.6833,-88.7833],
-  ["Usulután",13.4833,-88.5000],
-  ["San Miguel",13.4833,-88.1833],
-  ["Morazán",13.7667,-88.1167],
-  ["La Unión",13.4167,-87.8833],
+  ["Ahuachapán",13.97,-89.87],
+  ["Santa Ana",14.05,-89.53],
+  ["Sonsonate",13.71,-89.68],
+  ["Chalatenango",14.15,-89.00],
+  ["La Libertad",13.66,-89.32],
+  ["San Salvador",13.80,-89.16],
+  ["Cuscatlán",13.82,-88.94],
+  ["Cabañas",13.88,-88.62],
+  ["La Paz",13.53,-88.93],
+  ["San Vicente",13.58,-88.79],
+  ["Usulután",13.42,-88.46],
+  ["San Miguel",13.56,-88.16],
+  ["Morazán",13.79,-88.08],
+  ["La Unión",13.55,-87.90],
 ];
 function addDeptoLabels(){
   DEPTO_CENTROIDS.forEach(([nombre,lat,lon])=>{
