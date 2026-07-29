@@ -189,6 +189,10 @@
   .map-count{position:absolute;right:14px;top:14px;z-index:500;background:rgba(11,31,42,.92);color:#dCe7ee;
     font-size:11.5px;font-weight:600;padding:7px 12px;border-radius:9px;letter-spacing:.3px;backdrop-filter:blur(4px)}
   .leaflet-tooltip{font-family:'Inter',sans-serif;font-size:12px;font-weight:600}
+  .depto-label{background:none;border:none;box-shadow:none;pointer-events:none}
+  .depto-label span{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;letter-spacing:.5px;
+    text-transform:uppercase;color:#0b1f2a;white-space:nowrap;
+    text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff,0 0 6px #fff}
 
   .overlay{position:absolute;inset:0;z-index:900;display:flex;align-items:center;justify-content:center;
     background:rgba(238,241,244,.85);backdrop-filter:blur(2px)}
@@ -754,6 +758,31 @@ function initMap(){
     maxZoom:19, subdomains:"abcd", attribution:'&copy; OpenStreetMap, &copy; CARTO'
   }).addTo(map);
   markersLayer = L.layerGroup().addTo(map);
+  addDeptoLabels();
+}
+const DEPTO_CENTROIDS = [
+  ["Ahuachapán",13.9214,-89.8450],
+  ["Santa Ana",13.9942,-89.5597],
+  ["Sonsonate",13.7167,-89.7333],
+  ["Chalatenango",14.1000,-89.1667],
+  ["La Libertad",13.6833,-89.3667],
+  ["San Salvador",13.7300,-89.1900],
+  ["Cuscatlán",13.7500,-88.9500],
+  ["La Paz",13.5167,-88.9500],
+  ["Cabañas",13.8667,-88.6333],
+  ["San Vicente",13.6833,-88.7833],
+  ["Usulután",13.4833,-88.5000],
+  ["San Miguel",13.4833,-88.1833],
+  ["Morazán",13.7667,-88.1167],
+  ["La Unión",13.4167,-87.8833],
+];
+function addDeptoLabels(){
+  DEPTO_CENTROIDS.forEach(([nombre,lat,lon])=>{
+    L.marker([lat,lon],{
+      icon:L.divIcon({className:"depto-label",html:`<span>${nombre}</span>`,iconSize:[0,0]}),
+      interactive:false, keyboard:false
+    }).addTo(map);
+  });
 }
 function setSync(stateName, text){
   document.getElementById("sync").className = "sync "+stateName;
